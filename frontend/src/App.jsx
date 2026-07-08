@@ -28,7 +28,45 @@ function App() {
   ];
 
   const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+    e.preventDefault();
+  
+  // 1. Validation
+  if (!file) {
+    alert("Please select a report image first!");
+    return;
+  }
+  
+  setLoading(true);
+
+  try {
+    // 2. Prepare the data for the backend (using FormData for file uploads)
+    const formData = new FormData();
+    formData.append('report', file);
+
+    // 3. Point to your live Render backend URL
+    const response = await fetch('https://medpulse-ai-z3gx.onrender.com/api/analyze', {
+      method: 'POST',
+      body: formData, // Send the file as part of the FormData
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      // Success! Update your state with the data from Gemini
+      setData(data);
+      alert("Report scanned successfully!");
+    } else {
+      // If the backend returns an error
+      console.error("Backend Error:", data.error);
+      alert(data.error || "Failed to scan report. Check backend logs.");
+    }
+
+  } catch (error) {
+    console.error("Network Error:", error);
+    alert("Could not connect to the server. Check your internet connection.");
+  } finally {
+    setLoading(false);
+  }
   };
 
   const toggleExercise = (key) => {
