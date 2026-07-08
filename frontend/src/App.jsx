@@ -3,7 +3,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import { Upload, Activity, ShieldAlert, FileText, CheckCircle, RefreshCw, Layers, Database, Package, TrendingUp, Clock, Stethoscope, HeartHandshake, X, Calendar, MapPin, Phone, Dumbbell, Trophy, Apple } from 'lucide-react';
 
 // YOUR GEMINI API KEY PLACED SECURELY HERE
-const GEMINI_API_KEY = "PASTE_YOUR_GEMINI_API_KEY_HERE";
+const GEMINI_API_KEY = "AQ.Ab8RN6IwzPVOO3ZFOEeu2E7CU97yuu0rLyCRtvBBv6gu5c4MQw";
 function App() {
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
