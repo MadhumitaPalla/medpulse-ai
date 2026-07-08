@@ -2,8 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import multer from 'multer';
 import dotenv from 'dotenv';
-const { GoogleGenerativeAI } = require('@google/generative-ai');
+import { GoogleGenerativeAI } from '@google/generative-ai'; // CORRECTED SDK PATH
 
+dotenv.config();
 dotenv.config();
 
 const app = express();
