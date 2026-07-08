@@ -14,7 +14,8 @@ app.use(express.json());
 const upload = multer({ storage: multer.memoryStorage() });
 
 // Initialize Gemini SDK
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+// Replace the old line 17 with this:
+const genAI = new GoogleGenerativeAI(process.env.AQ.Ab8RN6IwzPVOO3ZFOEeu2E7CU97yuu0rLyCRtvBBv6gu5c4MQw);
 
 app.post('/api/analyze', upload.single('report'), async (req, res) => {
   try {
